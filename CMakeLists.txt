@@ -9,7 +9,9 @@ set(CMAKE_CXX_STANDARD 23)
 
 pico_sdk_init()
 
-add_executable(rapunzel main.c)
+add_executable(rapunzel main.c
+        display.h
+        )
 
 # Add other deps
 

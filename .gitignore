@@ -2,3 +2,4 @@
 pico-sdk/
 pico-examples/
 build/
+cmake-build-debug/
