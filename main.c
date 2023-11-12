@@ -1,17 +1,24 @@
-#include "display.h"
+#include <stdio.h>
 #include "pico/stdlib.h"
+#include "pico/time.h"
+#include "hardware/gpio.h"
 
-int main(void) {
-    // initialize pico SDK and other necessary components.
-    stdio_init_all();
+// Use the default LED pin provided by the Pico SDK
+#define LED_PIN PICO_DEFAULT_LED_PIN
 
-    // initialize the display hardware.
-    display_init();
+int main() {
+    stdio_init_all(); // Initialize stdio for printing to the console
 
-    // main loop is endless.
+    // Initialize the Pico SDK runtime environment
+    gpio_init(LED_PIN);
+    gpio_set_dir(LED_PIN, GPIO_OUT);
+
     while (1) {
-        // update the display with new content.
-        display_update();
+        // Toggle the LED
+        gpio_put(LED_PIN, 1);
+        sleep_ms(500);
+        gpio_put(LED_PIN, 0);
+        sleep_ms(500);
     }
 
     return 0;
